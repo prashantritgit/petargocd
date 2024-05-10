@@ -1,20 +1,21 @@
 apiVersion: apps/v1
-kind: Deployment # Kubernetes resource kind we are creating
+kind: Deployment
 metadata:
-  name: pet-deployment
+  name: react-app-deployment
 spec:
+  replicas: 3  # Adjust the number of replicas as needed
   selector:
     matchLabels:
-      app: pet
-  replicas: 2 # Number of replicas that will be created for this deployment
+      app: react-app
   template:
     metadata:
       labels:
-        app: pet
+        app: react-app
     spec:
       containers:
-        - name: pet
-          image: prashantritgit/petimage123:latest # Image that will be used to containers in the cluster
-          imagePullPolicy: IfNotPresent
+        - name: react-app-container
+          image: bhandariajay006/2048:latest  # Use your actual Docker image name and tag
           ports:
-            - containerPort: 8082 # The port that the container is running on in the cluster
+            - containerPort: 3000  # The port your React app is listening on
+
+
